@@ -26,7 +26,7 @@ removed <- anti_join(temp, validation)
 edx <- rbind(edx, removed)
 rm(dl, ratings, movies, test_index, temp, movielens, removed)
 
-# six variables “userID”, “movieID”, “rating”, “timestamp”, “title”, and “genres”.
+# lists six variables “userID”, “movieID”, “rating”, “timestamp”, “title”, and “genres” in data frame 
 head(edx) %>%
   print.data.frame()
 
@@ -38,7 +38,7 @@ edx %>%
   summarize(n_users = n_distinct(userId), 
             n_movies = n_distinct(movieId))
 
-#distribution of ratings 
+#distribution of ratings (histogram)
 edx %>%
   ggplot(aes(rating)) +
   geom_histogram(binwidth = 0.25, color = "black") +
@@ -46,7 +46,7 @@ edx %>%
   scale_y_continuous(breaks = c(seq(0, 3000000, 500000))) +
   ggtitle("Rating distribution")
 
-#ratingspermovie
+#ratingspermovie (Histogram)
 edx %>%
   count(movieId) %>%
   ggplot(aes(n)) +
@@ -56,7 +56,7 @@ edx %>%
   ylab("Number of movies") +
   ggtitle("Number of ratings per movie")
 
-#movies rated once
+#movies rated once (chart)
 edx %>%
   group_by(movieId) %>%
   summarize(count = n()) %>%
@@ -67,7 +67,7 @@ edx %>%
   slice(1:20) %>%
   knitr::kable()
 
-#User ratings
+#User ratings (Histogram)
 edx %>%
   count(userId) %>%
   ggplot(aes(n)) +
