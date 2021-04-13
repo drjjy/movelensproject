@@ -1,5 +1,5 @@
-require(tidyverse)
-require(caret)
+library(tidyverse)
+library(caret)
 
 dl <- tempfile()
 download.file("http://files.grouplens.org/datasets/movielens/ml-10m.zip", dl)
